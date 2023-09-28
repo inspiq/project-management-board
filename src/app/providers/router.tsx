@@ -5,5 +5,9 @@ import {
 } from 'react-router-dom'
 
 export const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<></>}></Route>),
+  createRoutesFromElements(
+    <Route path="/" element={<></>}>
+      <Route path="test" element={<></>} />
+    </Route>,
+  ),
 )
