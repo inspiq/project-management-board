@@ -3,8 +3,15 @@ import { PlusIcon } from 'shared/icons'
 
 import styles from './styles.module.css'
 
-export const UiButton = ({ children }: PropsWithChildren<unknown>) => (
-  <div className={styles.btn}>
+interface UiButtonProps {
+  onClick: () => void
+}
+
+export const UiButton = ({
+  children,
+  onClick,
+}: PropsWithChildren<unknown> & UiButtonProps) => (
+  <div className={styles.btn} onClick={onClick}>
     <PlusIcon width={16} height={16} />
     <p>{children}</p>
   </div>
