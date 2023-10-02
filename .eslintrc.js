@@ -61,7 +61,6 @@ module.exports = {
         groups: [['^\\u0000'], ['^react', '^[^.]'], ['^src/'], ['^\\.']],
       },
     ],
-
     'max-lines': ['error', 500],
     'no-console': 'error',
     'object-shorthand': 'error',
@@ -69,7 +68,6 @@ module.exports = {
     'no-nested-ternary': 'error',
     'newline-before-return': 'warn',
     semi: ['error', 'never'],
-
     'prettier/prettier': [
       'error',
       {
@@ -82,7 +80,6 @@ module.exports = {
         bracketSpacing: true,
       },
     ],
-
     'import/newline-after-import': 'error',
     'react/react-in-jsx-scope': 'off',
   },

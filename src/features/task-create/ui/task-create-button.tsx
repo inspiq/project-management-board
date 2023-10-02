@@ -1,16 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from 'app/store/store'
+import { useDispatch } from 'react-redux'
 import { UiButton } from 'shared/ui/button'
 
-import { incrementByAmount } from '../model/create.model'
+import { createTask } from '../model/create.model'
 
 export const TaskCreateButton = () => {
   const dispatch = useDispatch()
-  const value = useSelector((state: RootState) => state.createTask.value)
 
   return (
-    <UiButton onClick={() => dispatch(incrementByAmount(5))}>
-      Добавить задачу {value}
+    <UiButton
+      onClick={() => {
+        dispatch(createTask({ title: 'Task' }))
+      }}>
+      Добавить задачу
     </UiButton>
   )
 }

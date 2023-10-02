@@ -1,22 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface CounterState {
-  value: number
+interface Task {
+  title: string
 }
 
-const initialState: CounterState = {
-  value: 0,
+interface InitialState {
+  tasks: Task[]
+}
+
+const initialState: InitialState = {
+  tasks: [],
 }
 
 export const createTaskSlice = createSlice({
-  name: 'createTask',
+  name: 'createTaskSlice',
   initialState,
   reducers: {
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    createTask: (state, action: PayloadAction<Task>) => {
+      state.tasks.push(action.payload)
     },
   },
 })
 
-export const { incrementByAmount } = createTaskSlice.actions
+export const { createTask } = createTaskSlice.actions
 export const createTaskReducer = createTaskSlice.reducer
