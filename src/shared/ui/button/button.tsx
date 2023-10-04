@@ -10,7 +10,7 @@ interface UiButtonProps {
 export const UiButton = ({
   children,
   onClick,
-}: PropsWithChildren<unknown> & UiButtonProps) => (
+}: PropsWithChildren<UiButtonProps>) => (
   <div className={styles.btn} onClick={onClick}>
     <PlusIcon width={16} height={16} />
     <p>{children}</p>

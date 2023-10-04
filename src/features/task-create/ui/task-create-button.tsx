@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
-import { UiButton } from 'shared/ui/button'
+import { UiButton } from 'shared/ui'
 
-import { createTask } from '../model/create.model'
+import { showField } from '..'
 
 export const TaskCreateButton = () => {
   const dispatch = useDispatch()
@@ -9,7 +9,7 @@ export const TaskCreateButton = () => {
   return (
     <UiButton
       onClick={() => {
-        dispatch(createTask({ title: 'Task' }))
+        dispatch(showField())
       }}>
       Добавить задачу
     </UiButton>

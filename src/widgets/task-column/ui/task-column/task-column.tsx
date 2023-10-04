@@ -1,24 +1,19 @@
-import { useSelector } from 'react-redux'
-import { RootState } from 'app/store/store'
-import { TaskCreateButton } from 'features/task-create'
+import { PropsWithChildren } from 'react'
 
 import styles from './styles.module.css'
 
 interface TaskColumnProps {
   title: string
   isShowButton?: boolean
+  isShowInput?: boolean
 }
 
-export const TaskColumn = ({ title, isShowButton }: TaskColumnProps) => {
-  const tasks = useSelector((state: RootState) => state.createTask.tasks)
-
-  return (
-    <div className={styles.taskColumn}>
-      <div className={styles.title}>{title}</div>
-      {isShowButton && <TaskCreateButton />}
-      {tasks.map((task) => (
-        <div>{task.title}</div>
-      ))}
-    </div>
-  )
-}
+export const TaskColumn = ({
+  title,
+  children,
+}: PropsWithChildren<TaskColumnProps>) => (
+  <div className={styles.taskColumn}>
+    <div className={styles.title}>{title}</div>
+    {children}
+  </div>
+)
