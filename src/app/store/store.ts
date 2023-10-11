@@ -1,18 +1,18 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { createTaskReducer, inputReducer } from 'features/task-create'
+import { inputReducer, taskReducer } from 'features/task-create'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
-  createTask: createTaskReducer,
+  task: taskReducer,
   input: inputReducer,
 })
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['createTask'],
+  whitelist: ['task'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

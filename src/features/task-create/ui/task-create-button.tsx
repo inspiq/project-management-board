@@ -7,11 +7,6 @@ export const TaskCreateButton = () => {
   const dispatch = useDispatch()
 
   return (
-    <UiButton
-      onClick={() => {
-        dispatch(showField())
-      }}>
-      Добавить задачу
-    </UiButton>
+    <UiButton onClick={() => dispatch(showField())}>Добавить задачу</UiButton>
   )
 }

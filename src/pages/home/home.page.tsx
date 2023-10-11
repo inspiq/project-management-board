@@ -3,11 +3,11 @@ import { RootState } from 'app/store'
 import { TaskCreateButton } from 'features/task-create'
 import { UiInput } from 'shared/ui'
 import { TaskColumn } from 'widgets/task-column'
+import { TasksList } from 'widgets/tasks'
 
 import { Layout } from './layout/layout'
 
 export const HomePage = () => {
-  const { tasks } = useSelector((state: RootState) => state.createTask)
   const { isShowFieldCreateTask } = useSelector(
     (state: RootState) => state.input,
   )
@@ -17,9 +17,7 @@ export const HomePage = () => {
       <TaskColumn title="Задачи">
         <TaskCreateButton />
         {isShowFieldCreateTask && <UiInput />}
-        {tasks.map((task, i) => (
-          <div key={i}>{task.title}</div>
-        ))}
+        <TasksList />
       </TaskColumn>
       <TaskColumn title="В разработке" />
       <TaskColumn title="Выполненные" />
