@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-export const App = () => {
-  return <div>App</div>
-=======
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Provider } from 'react-redux'
@@ -21,5 +17,4 @@ export const App = () => {
       </PersistGate>
     </Provider>
   )
->>>>>>> Stashed changes
 }
