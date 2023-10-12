@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
-import { Task } from 'app/types'
 import { CheckMarkIcon } from 'shared/icons'
+import { Task } from 'shared/types'
 
-import { updateTaskStatus } from '..'
+import { updateTaskCompleted } from '..'
 import styles from './styles.module.css'
 
 interface TaskUpdateStatusButtonProps
@@ -16,7 +16,7 @@ export const TaskUpdateStatusButton = ({
 
   return (
     <div
-      onClick={() => dispatch(updateTaskStatus(id))}
+      onClick={() => dispatch(updateTaskCompleted(id))}
       className={styles.iconWrapper}>
       {isCompleted ? (
         <CheckMarkIcon color="green" width={24} height={24} />

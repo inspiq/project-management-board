@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { RootState } from 'app/store'
 import { TaskCreateButton } from 'features/task-create'
+import { ColumnTitles, Status } from 'shared/types'
 import { UiInput } from 'shared/ui'
 import { TaskColumn } from 'widgets/task-column'
 import { TasksList } from 'widgets/tasks'
@@ -12,17 +13,25 @@ export const HomePage = () => {
     (state: RootState) => state.input,
   )
 
-  //const { tasks } = useSelector((state: RootState) => state.task.tasks)
-
   return (
     <Layout>
-      <TaskColumn title="Задачи">
+      <TaskColumn title={ColumnTitles.TASKS}>
         <TaskCreateButton />
         {isShowFieldCreateTask && <UiInput />}
-        <TasksList />
+        <TasksList status={Status.NEW} columnTitle={ColumnTitles.TASKS} />
       </TaskColumn>
-      <TaskColumn title="В разработке" />
-      <TaskColumn title="Выполненные" />
+      <TaskColumn title={ColumnTitles.IN_PROGRESS}>
+        <TasksList
+          status={Status.IN_PROGRESS}
+          columnTitle={ColumnTitles.IN_PROGRESS}
+        />
+      </TaskColumn>
+      <TaskColumn title={ColumnTitles.COMPLETED}>
+        <TasksList
+          status={Status.COMPLETED}
+          columnTitle={ColumnTitles.COMPLETED}
+        />
+      </TaskColumn>
     </Layout>
   )
 }

@@ -1,8 +1,6 @@
-export enum Status {
-  IN_PROGRESS = 'In progress',
-  COMPLETED = 'Completed',
-  NEW = 'New',
-}
+import { Status } from './enums'
+
+export * from './enums'
 
 export interface Task {
   id: string

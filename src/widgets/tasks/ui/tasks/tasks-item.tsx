@@ -1,16 +1,16 @@
 import { memo } from 'react'
 import { useDrag } from 'react-dnd'
-import { Task } from 'app/types'
 import { TaskUpdateStatusButton } from 'features/task-create'
+import { Task } from 'shared/types'
 
 import styles from './styles.module.css'
 
 interface TasksItemProps extends Task {}
 
 export const TasksItem = memo(({ title, id, isCompleted }: TasksItemProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [, drag] = useDrag(() => ({
     type: 'task',
+    item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

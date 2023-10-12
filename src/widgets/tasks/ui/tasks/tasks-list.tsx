@@ -1,10 +1,58 @@
-import { useSelector } from 'react-redux'
+import { Fragment } from 'react'
+import { useDrop } from 'react-dnd'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'app/store'
+import { addItemToColumn } from 'features/task-create'
+import { Status, Task } from 'shared/types'
 
+import styles from './styles.module.css'
 import { TasksItem } from './tasks-item'
 
-export const TasksList = () => {
+interface TasksListProps {
+  columnTitle: string
+  status: Status
+}
+
+export const TasksList = ({ columnTitle, status }: TasksListProps) => {
+  const dispatch = useDispatch()
+
   const { tasks } = useSelector((state: RootState) => state.task)
 
-  return tasks.map((task) => <TasksItem key={task.id} {...task} />)
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: 'task',
+    drop: (item: Task) => handleDnd(item.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }))
+
+  const handleDnd = (id: string) => {
+    const payload = {
+      id,
+      title: columnTitle,
+    }
+
+    dispatch(addItemToColumn(payload))
+  }
+
+  return (
+    <>
+      {tasks?.map((task) => {
+        if (task.status === status) {
+          return (
+            <Fragment key={task.id}>
+              <TasksItem {...task} />
+            </Fragment>
+          )
+        }
+      })}
+      <div
+        ref={drop}
+        className={
+          isOver
+            ? `${styles.taskDrop} ${styles.taskDropActive}`
+            : `${styles.taskDrop}`
+        }></div>
+    </>
+  )
 }
