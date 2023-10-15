@@ -1,3 +1,7 @@
+.tasksListWrapper {
+  margin-top: 20px;
+}
+
 .taskContent {
   display: flex;
   align-items: center;

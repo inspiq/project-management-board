@@ -1,6 +1,6 @@
 :root {
   /* FONT FAMILY */
-  --work-sans: 'Work Sans', sans-serif;
+  --montserrat: 'Montserrat', sans-serif;
 
   /* COLORS */
   --light-green: #cbe8e3;
@@ -13,5 +13,4 @@
   --w500: 500;
   --w600: 600;
   --w700: 700;
-  --w800: 800;
 }

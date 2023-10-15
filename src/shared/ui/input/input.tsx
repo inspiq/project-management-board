@@ -50,6 +50,7 @@ export const UiInput = () => {
       value={inputValue}
       onKeyUp={handleKeyPress}
       onBlur={onBlur}
+      placeholder="Задача"
     />
   )
 }
