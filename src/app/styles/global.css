@@ -10,3 +10,8 @@ input {
   outline: none;
   border: 0;
 }
+
+textarea {
+  resize: none;
+  outline: none;
+}

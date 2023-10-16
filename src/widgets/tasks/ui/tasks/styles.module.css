@@ -8,9 +8,9 @@
   gap: 10px;
   padding: 15px;
   background-color: var(--white);
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 10px;
-  box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--main-shadow);
 }
 
 .taskWrapper {
@@ -19,12 +19,12 @@
 
 .taskOverlay {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(245, 245, 245, 0.5);
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .taskDrop {
@@ -32,9 +32,16 @@
 }
 
 .taskDropActive {
-  border: 1px solid var(--light-yellow);
+  border: 1px solid var(--orange);
   border-style: dashed;
-  border-radius: 5px;
+  border-radius: 8px;
   height: 54px;
   margin-top: 10px;
+  background-color: var(--light-grey);
+}
+
+.taskTitle {
+  word-break: break-all;
+  font-size: 14px;
+  font-weight: var(--w400);
 }

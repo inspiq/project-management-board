@@ -6,7 +6,9 @@ import { showField } from '..'
 export const TaskCreateButton = () => {
   const dispatch = useDispatch()
 
-  return (
-    <UiButton onClick={() => dispatch(showField())}>Добавить задачу</UiButton>
-  )
+  const showFieldCreateTask = () => {
+    dispatch(showField())
+  }
+
+  return <UiButton onClick={showFieldCreateTask}>Добавить задачу</UiButton>
 }

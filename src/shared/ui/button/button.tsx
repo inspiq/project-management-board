@@ -12,7 +12,7 @@ export const UiButton = ({
   onClick,
 }: PropsWithChildren<UiButtonProps>) => (
   <div className={styles.btn} onClick={onClick}>
-    <PlusIcon width={16} height={16} />
+    <PlusIcon width={16} height={16} color={'var(--blue)'} />
     <p>{children}</p>
   </div>
 )

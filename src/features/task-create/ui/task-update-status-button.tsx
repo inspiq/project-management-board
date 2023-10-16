@@ -6,7 +6,7 @@ import { updateTaskCompleted } from '..'
 import styles from './styles.module.css'
 
 interface TaskUpdateStatusButtonProps
-  extends Pick<Task, Exclude<keyof Task, 'title' | 'status'>> {}
+  extends Pick<Task, 'id' | 'isCompleted'> {}
 
 export const TaskUpdateStatusButton = ({
   id,
@@ -14,14 +14,16 @@ export const TaskUpdateStatusButton = ({
 }: TaskUpdateStatusButtonProps) => {
   const dispatch = useDispatch()
 
+  const updateTaskStatus = () => {
+    dispatch(updateTaskCompleted(id))
+  }
+
   return (
-    <div
-      onClick={() => dispatch(updateTaskCompleted(id))}
-      className={styles.iconWrapper}>
+    <div onClick={updateTaskStatus} className={styles.iconWrapper}>
       {isCompleted ? (
-        <CheckMarkIcon color="green" width={24} height={24} />
+        <CheckMarkIcon color="green" width={20} height={20} />
       ) : (
-        <CheckMarkIcon width={24} height={24} />
+        <CheckMarkIcon width={20} height={20} />
       )}
     </div>
   )

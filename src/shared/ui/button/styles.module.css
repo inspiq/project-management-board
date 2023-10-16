@@ -4,5 +4,6 @@
   gap: 5px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: var(--w500);
+  font-weight: var(--w400);
+  color: var(--blue);
 }
