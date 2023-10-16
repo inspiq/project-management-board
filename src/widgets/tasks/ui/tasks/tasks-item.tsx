@@ -20,7 +20,7 @@ export const TasksItem = memo(({ title, id, isCompleted }: TasksItemProps) => {
     <div className={styles.taskWrapper} ref={drag}>
       <div className={styles.taskContent}>
         <TaskUpdateStatusButton id={id} isCompleted={isCompleted} />
-        <div>{title}</div>
+        <div className={styles.taskTitle}>{title}</div>
       </div>
       {isCompleted && <div className={styles.taskOverlay}></div>}
     </div>

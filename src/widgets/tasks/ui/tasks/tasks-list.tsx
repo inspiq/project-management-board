@@ -36,7 +36,7 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
   }
 
   return (
-    <>
+    <div className={styles.tasksListWrapper}>
       {tasks?.map((task) => {
         if (task.status === status) {
           return (
@@ -53,6 +53,6 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
             ? `${styles.taskDrop} ${styles.taskDropActive}`
             : `${styles.taskDrop}`
         }></div>
-    </>
+    </div>
   )
 }

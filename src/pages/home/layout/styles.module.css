@@ -7,3 +7,11 @@
   align-items: flex-start;
   gap: 25px;
 }
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('../../../shared/images/bg.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
