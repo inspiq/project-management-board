@@ -18,15 +18,7 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
 
   const { tasks } = useSelector((state: RootState) => state.task)
 
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'task',
-    drop: (item: Task) => handleDnd(item.id),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }))
-
-  const handleDnd = (id: string) => {
+  const handleAddItemToColumn = (id: string) => {
     const payload = {
       id,
       title: columnTitle,
@@ -34,6 +26,18 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
 
     dispatch(addItemToColumn(payload))
   }
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: 'task',
+    drop: (item: Task) => handleAddItemToColumn(item.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }))
+
+  const cn = isOver
+    ? `${styles.taskDrop} ${styles.taskDropActive}`
+    : `${styles.taskDrop}`
 
   return (
     <div className={styles.tasksListWrapper}>
@@ -46,13 +50,7 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
           )
         }
       })}
-      <div
-        ref={drop}
-        className={
-          isOver
-            ? `${styles.taskDrop} ${styles.taskDropActive}`
-            : `${styles.taskDrop}`
-        }></div>
+      <div ref={drop} className={cn}></div>
     </div>
   )
 }

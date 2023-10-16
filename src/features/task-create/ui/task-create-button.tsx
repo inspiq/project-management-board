@@ -1,14 +1,5 @@
-import { useDispatch } from 'react-redux'
 import { UiButton } from 'shared/ui'
 
-import { showField } from '..'
-
-export const TaskCreateButton = () => {
-  const dispatch = useDispatch()
-
-  const showFieldCreateTask = () => {
-    dispatch(showField())
-  }
-
-  return <UiButton onClick={showFieldCreateTask}>Добавить задачу</UiButton>
+export const TaskCreateButton = ({ open }: { open: () => void }) => {
+  return <UiButton onClick={open}>Добавить задачу</UiButton>
 }

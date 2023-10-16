@@ -19,7 +19,7 @@ export const TaskUpdateStatusButton = ({
   }
 
   return (
-    <div onClick={updateTaskStatus} className={styles.iconWrapper}>
+    <div onClick={updateTaskStatus} className={styles.checkMarkIconWrapper}>
       {isCompleted ? (
         <CheckMarkIcon color="green" width={20} height={20} />
       ) : (

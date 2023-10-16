@@ -49,9 +49,12 @@ export const taskSlice = createSlice({
 
       task.status = status[title]
     },
+    deleteTask: (state, action: PayloadAction<string>) => {
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload)
+    },
   },
 })
 
-export const { createTask, updateTaskCompleted, addItemToColumn } =
+export const { createTask, updateTaskCompleted, addItemToColumn, deleteTask } =
   taskSlice.actions
 export const taskReducer = taskSlice.reducer

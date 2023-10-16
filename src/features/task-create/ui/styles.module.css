@@ -1,5 +1,21 @@
-.iconWrapper {
+.checkMarkIconWrapper {
+  z-index: 1;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.menuIconWrapper {
+  z-index: 1;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.menuItemContainer {
   display: flex;
   align-items: center;
-  z-index: 1;
+  font-size: 13px;
+  gap: 5px;
+  cursor: pointer;
 }
