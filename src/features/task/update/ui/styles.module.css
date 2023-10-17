@@ -1,0 +1,6 @@
+.checkMarkIconWrapper {
+  z-index: 1;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}

@@ -1,4 +1,4 @@
-.menuWrapper {
+.menuContainer {
   max-width: 120px;
   width: 100%;
   padding: 10px;
@@ -8,6 +8,13 @@
   top: 40px;
   right: -85px;
   border-radius: 8px;
-  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--secondary-shadow);
   z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 3;
+}
+
+.showMenu {
+  opacity: 1;
 }

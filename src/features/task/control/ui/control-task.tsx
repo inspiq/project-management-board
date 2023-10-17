@@ -6,13 +6,13 @@ interface TaskControlProps {
   toggle: () => void
 }
 
-export const TaskControl = ({ toggle }: TaskControlProps) => {
-  const handleShowMenu = () => {
+export const ControlTask = ({ toggle }: TaskControlProps) => {
+  const handleToggleMenu = () => {
     toggle()
   }
 
   return (
-    <div onClick={handleShowMenu} className={styles.checkMarkIconWrapper}>
+    <div onClick={handleToggleMenu} className={styles.checkMarkIconWrapper}>
       <MenuIcon />
     </div>
   )

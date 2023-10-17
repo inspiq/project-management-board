@@ -1,7 +1,7 @@
-import { TaskCreateButton } from 'features/task-create'
+import { CreateTaskButton } from 'features/task'
 import { useToggle } from 'shared/hooks'
 import { ColumnTitles, Status } from 'shared/types'
-import { UiInput } from 'shared/ui'
+import { UiTextArea } from 'shared/ui'
 import { TaskColumn } from 'widgets/task-column'
 import { TasksList } from 'widgets/tasks'
 
@@ -13,8 +13,8 @@ export const HomePage = () => {
   return (
     <Layout>
       <TaskColumn title={ColumnTitles.TASKS}>
-        <TaskCreateButton open={open} />
-        {isVisible && <UiInput />}
+        <CreateTaskButton open={open} />
+        {isVisible && <UiTextArea />}
         <TasksList status={Status.NEW} columnTitle={ColumnTitles.TASKS} />
       </TaskColumn>
       <TaskColumn title={ColumnTitles.IN_PROGRESS}>

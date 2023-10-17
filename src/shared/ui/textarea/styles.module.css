@@ -7,5 +7,6 @@
   font-size: 14px;
   font-weight: var(--w400);
   margin-top: 20px;
-  box-shadow: var(--main-shadow);
+  box-shadow: var(--primary-shadow);
+  white-space: nowrap;
 }

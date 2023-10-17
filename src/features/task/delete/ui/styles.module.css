@@ -1,0 +1,7 @@
+.menuItemContainer {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  gap: 5px;
+  cursor: pointer;
+}

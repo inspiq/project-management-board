@@ -14,7 +14,8 @@
   --blue: #3f8bfd;
 
   /* SHADOWS */
-  --main-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  --primary-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  --secondary-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
 
   /* FONT WEIGHT */
   --w400: 400;

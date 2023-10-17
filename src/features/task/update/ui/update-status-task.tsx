@@ -2,13 +2,13 @@ import { useDispatch } from 'react-redux'
 import { CheckMarkIcon } from 'shared/icons'
 import { Task } from 'shared/types'
 
-import { updateTaskCompleted } from '..'
+import { updateTaskCompleted } from '../..'
 import styles from './styles.module.css'
 
 interface TaskUpdateStatusButtonProps
   extends Pick<Task, 'id' | 'isCompleted'> {}
 
-export const TaskUpdateStatusButton = ({
+export const UpdateStatusTask = ({
   id,
   isCompleted,
 }: TaskUpdateStatusButtonProps) => {

@@ -1,5 +1,5 @@
 .tasksListWrapper {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .taskContent {
@@ -9,7 +9,7 @@
   background-color: var(--white);
   border-radius: 8px;
   margin-top: 10px;
-  box-shadow: var(--main-shadow);
+  box-shadow: var(--primary-shadow);
 }
 
 .taskContainer {
@@ -31,7 +31,8 @@
 }
 
 .taskDrop {
-  padding: 10px;
+  width: 100%;
+  height: 20px;
 }
 
 .taskDropActive {
@@ -40,6 +41,7 @@
   border-radius: 8px;
   height: 54px;
   margin-top: 10px;
+  margin-bottom: 10px;
   background-color: var(--light-grey);
 }
 
@@ -50,4 +52,13 @@
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.menuWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
 }

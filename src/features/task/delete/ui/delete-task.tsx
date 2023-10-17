@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux'
 import { DeleteIcon } from 'shared/icons'
 
-import { deleteTask } from '..'
+import { deleteTask } from '../..'
 import styles from './styles.module.css'
 
-export const TaskDelete = ({ id }: { id: string }) => {
+export const DeleteTask = ({ id }: { id: string }) => {
   const dispatch = useDispatch()
 
   const handleTaskDelete = () => {

@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { useDrop } from 'react-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'app/store'
-import { addItemToColumn } from 'features/task-create'
+import { addItemToColumn } from 'features/task'
 import { Status, Task } from 'shared/types'
 
 import styles from './styles.module.css'

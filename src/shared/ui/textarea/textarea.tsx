@@ -1,13 +1,13 @@
 import { ChangeEvent, KeyboardEventHandler } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'app/store'
-import { createTask, onChangeValue } from 'features/task-create'
+import { createTask, onChangeValue } from 'features/task'
 import { Status } from 'shared/types'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './styles.module.css'
 
-export const UiInput = () => {
+export const UiTextArea = () => {
   const { inputValue } = useSelector((state: RootState) => state.input)
   const dispatch = useDispatch()
 
@@ -19,7 +19,7 @@ export const UiInput = () => {
   }
 
   const resetInputValueAndCreateTask = () => {
-    if (inputValue) {
+    if (inputValue && inputValue.trim()) {
       dispatch(createTask(payload))
       dispatch(onChangeValue(''))
     }
@@ -30,7 +30,7 @@ export const UiInput = () => {
     dispatch(onChangeValue(value))
   }
 
-  const handleKeyPress: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+  const onKeyUp: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     if (e.key === 'Enter') {
       resetInputValueAndCreateTask()
     }
@@ -45,7 +45,7 @@ export const UiInput = () => {
       className={styles.input}
       onChange={onChange}
       value={inputValue}
-      onKeyUp={handleKeyPress}
+      onKeyUp={onKeyUp}
       onBlur={onBlur}
       placeholder="Напишите текст задачи..."
     />
