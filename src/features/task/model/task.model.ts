@@ -73,6 +73,21 @@ export const taskSlice = createSlice({
 
       task.status = status[title]
 
+      const oldColumn = state.data.find(([, tasks]) =>
+        tasks.find((task) => task.id === id),
+      )
+
+      if (!oldColumn) {
+        return
+      }
+
+      const [, oldTasks] = oldColumn
+      const oldTaskIndex = oldTasks.findIndex((task) => task.id === id)
+
+      if (oldTaskIndex !== -1) {
+        oldTasks.splice(oldTaskIndex, 1)
+      }
+
       if (status[title] === Status.NEW) {
         state.data[0][1].push(task)
       }
@@ -100,10 +115,11 @@ export const taskSlice = createSlice({
 
       const filteredTasks = tasks.filter((task) => task.id !== taskId)
 
-      state.data = [
-        [statusTasks, filteredTasks],
-        ...state.data.filter(([status]) => status !== statusTasks),
-      ]
+      const filteredIndex = state.data.findIndex(
+        ([status]) => status === statusTasks,
+      )
+
+      state.data.splice(filteredIndex, 1, [statusTasks, filteredTasks])
     },
   },
 })
