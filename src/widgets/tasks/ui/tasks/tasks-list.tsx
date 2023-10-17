@@ -16,7 +16,7 @@ interface TasksListProps {
 export const TasksList = ({ columnTitle, status }: TasksListProps) => {
   const dispatch = useDispatch()
 
-  const { tasks } = useSelector((state: RootState) => state.task)
+  const { data } = useSelector((state: RootState) => state.task)
 
   const handleAddItemToColumn = (id: string) => {
     const payload = {
@@ -41,16 +41,16 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
 
   return (
     <div className={styles.tasksListWrapper} ref={drop}>
-      {tasks?.map((task) => {
-        if (task.status === status) {
-          return (
+      {data?.map(([statusGroup, tasks]) => {
+        if (statusGroup === status) {
+          return tasks.map((task) => (
             <Fragment key={task.id}>
               <TasksItem {...task} />
             </Fragment>
-          )
+          ))
         }
       })}
-      <div className={cn}></div>
+      <div ref={drop} className={cn}></div>
     </div>
   )
 }

@@ -2,11 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ColumnTitles, Status, Task } from 'shared/types'
 
 interface InitialState {
-  tasks: Task[]
+  data: [Status, Task[]][]
 }
 
 const initialState: InitialState = {
-  tasks: [],
+  data: [
+    [Status.NEW, []],
+    [Status.IN_PROGRESS, []],
+    [Status.COMPLETED, []],
+  ],
 }
 
 export const taskSlice = createSlice({
@@ -14,10 +18,25 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     createTask: (state, action: PayloadAction<Task>) => {
-      state.tasks.push(action.payload)
+      if (!state.data) {
+        return
+      }
+
+      state.data[0][1].push(action.payload)
     },
     updateTaskCompleted: (state, action: PayloadAction<string>) => {
-      const task = state.tasks.find((task) => task.id === action.payload)
+      const taskId = action.payload
+
+      const tasksToUpdate = state.data.find(([, tasks]) =>
+        tasks.find((task) => task.id === taskId),
+      )
+
+      if (!tasksToUpdate) {
+        return
+      }
+
+      const [, tasks] = tasksToUpdate
+      const task = tasks.find((task) => task.id === taskId)
 
       if (!task) {
         return
@@ -30,12 +49,17 @@ export const taskSlice = createSlice({
       action: PayloadAction<{ id: string; title: string }>,
     ) => {
       const { id, title } = action.payload
+      const tasksToTransfer = state.data.find(([, tasks]) =>
+        tasks.find((task) => task.id === id),
+      )
 
-      const task = state.tasks.find((task) => {
-        if (task.id === id) {
-          return task
-        }
-      })
+      if (!tasksToTransfer) {
+        return
+      }
+
+      const [, tasks] = tasksToTransfer
+
+      const task = tasks.find((task) => task.id === id)
 
       if (!task) {
         return
@@ -48,9 +72,38 @@ export const taskSlice = createSlice({
       }
 
       task.status = status[title]
+
+      if (status[title] === Status.NEW) {
+        state.data[0][1].push(task)
+      }
+
+      if (status[title] === Status.IN_PROGRESS) {
+        state.data[1][1].push(task)
+      }
+
+      if (status[title] === Status.COMPLETED) {
+        state.data[2][1].push(task)
+      }
     },
     deleteTask: (state, action: PayloadAction<string>) => {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload)
+      const taskId = action.payload
+
+      const tasksToFilter = state.data.find(([, tasks]) =>
+        tasks.find((task) => task.id === taskId),
+      )
+
+      if (!tasksToFilter) {
+        return
+      }
+
+      const [statusTasks, tasks] = tasksToFilter
+
+      const filteredTasks = tasks.filter((task) => task.id !== taskId)
+
+      state.data = [
+        [statusTasks, filteredTasks],
+        ...state.data.filter(([status]) => status !== statusTasks),
+      ]
     },
   },
 })
