@@ -1,12 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { inputReducer, taskReducer } from 'features/task'
+import { taskReducer } from 'features/task'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
   task: taskReducer,
-  input: inputReducer,
 })
 
 const persistConfig = {

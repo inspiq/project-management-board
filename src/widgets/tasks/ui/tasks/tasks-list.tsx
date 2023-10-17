@@ -50,7 +50,7 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
           )
         }
       })}
-      <div ref={drop} className={cn}></div>
+      <div className={cn}></div>
     </div>
   )
 }

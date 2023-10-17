@@ -1,6 +1,5 @@
 .menuContainer {
-  max-width: 120px;
-  width: 100%;
+  max-width: 200px;
   padding: 10px;
   height: auto;
   background-color: var(--white);
@@ -9,10 +8,9 @@
   right: -85px;
   border-radius: 8px;
   box-shadow: var(--secondary-shadow);
-  z-index: 2;
+  z-index: 3;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  z-index: 3;
 }
 
 .showMenu {
