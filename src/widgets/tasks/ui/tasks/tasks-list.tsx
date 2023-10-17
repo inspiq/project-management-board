@@ -40,7 +40,7 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
     : `${styles.taskDrop}`
 
   return (
-    <div className={styles.tasksListWrapper}>
+    <div className={styles.tasksListWrapper} ref={drop}>
       {tasks?.map((task) => {
         if (task.status === status) {
           return (

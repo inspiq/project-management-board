@@ -26,8 +26,8 @@ export const TasksItem = memo(({ title, id, isCompleted }: TasksItemProps) => {
 
   return (
     <>
-      <div className={styles.taskWrapper}>
-        <div className={styles.taskContainer} ref={drag}>
+      <div className={styles.taskWrapper} ref={drag}>
+        <div className={styles.taskContainer}>
           <div className={styles.taskContent}>
             <UpdateStatusTask id={id} isCompleted={isCompleted} />
             <div className={styles.taskTitle}>{title}</div>
