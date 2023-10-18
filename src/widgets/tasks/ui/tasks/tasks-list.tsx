@@ -41,6 +41,7 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
 
   return (
     <div className={styles.tasksListWrapper} ref={drop}>
+      <div className={cn}></div>
       {data?.map(([statusGroup, tasks]) => {
         if (statusGroup === status) {
           return tasks.map((task) => (
@@ -50,7 +51,6 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
           ))
         }
       })}
-      <div ref={drop} className={cn}></div>
     </div>
   )
 }

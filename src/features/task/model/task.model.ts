@@ -22,7 +22,7 @@ export const taskSlice = createSlice({
         return
       }
 
-      state.data[0][1].push(action.payload)
+      state.data[0][1].unshift(action.payload)
     },
     updateTaskCompleted: (state, action: PayloadAction<string>) => {
       const taskId = action.payload
@@ -89,15 +89,15 @@ export const taskSlice = createSlice({
       }
 
       if (status[title] === Status.NEW) {
-        state.data[0][1].push(task)
+        state.data[0][1].unshift(task)
       }
 
       if (status[title] === Status.IN_PROGRESS) {
-        state.data[1][1].push(task)
+        state.data[1][1].unshift(task)
       }
 
       if (status[title] === Status.COMPLETED) {
-        state.data[2][1].push(task)
+        state.data[2][1].unshift(task)
       }
     },
     deleteTask: (state, action: PayloadAction<string>) => {
@@ -121,15 +121,9 @@ export const taskSlice = createSlice({
 
       state.data.splice(filteredIndex, 1, [statusTasks, filteredTasks])
     },
-    createSubtask: () => {},
   },
 })
 
-export const {
-  createTask,
-  updateTaskCompleted,
-  addItemToColumn,
-  deleteTask,
-  createSubtask,
-} = taskSlice.actions
+export const { createTask, updateTaskCompleted, addItemToColumn, deleteTask } =
+  taskSlice.actions
 export const taskReducer = taskSlice.reducer

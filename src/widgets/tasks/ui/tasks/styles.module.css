@@ -1,7 +1,3 @@
-.tasksListWrapper {
-  margin-top: 15px;
-}
-
 .taskContent {
   display: flex;
   gap: 10px;

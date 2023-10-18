@@ -1,9 +1,7 @@
 .taskColumn {
   background-color: var(--light-grey);
   border-radius: 8px;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
   max-width: 330px;
   width: 100%;
   box-shadow: var(--secondary-shadow);
@@ -12,7 +10,6 @@
 .title {
   font-size: 16px;
   font-weight: var(--w600);
-  margin-bottom: 15px;
 }
 
 .inProgressBorder {
