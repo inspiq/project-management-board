@@ -73,15 +73,15 @@ export const taskSlice = createSlice({
 
       task.status = status[title]
 
-      const oldColumn = state.data.find(([, tasks]) =>
+      const tasksToUpdate = state.data.find(([, tasks]) =>
         tasks.find((task) => task.id === id),
       )
 
-      if (!oldColumn) {
+      if (!tasksToUpdate) {
         return
       }
 
-      const [, oldTasks] = oldColumn
+      const [, oldTasks] = tasksToUpdate
       const oldTaskIndex = oldTasks.findIndex((task) => task.id === id)
 
       if (oldTaskIndex !== -1) {
@@ -121,9 +121,15 @@ export const taskSlice = createSlice({
 
       state.data.splice(filteredIndex, 1, [statusTasks, filteredTasks])
     },
+    createSubtask: () => {},
   },
 })
 
-export const { createTask, updateTaskCompleted, addItemToColumn, deleteTask } =
-  taskSlice.actions
+export const {
+  createTask,
+  updateTaskCompleted,
+  addItemToColumn,
+  deleteTask,
+  createSubtask,
+} = taskSlice.actions
 export const taskReducer = taskSlice.reducer
