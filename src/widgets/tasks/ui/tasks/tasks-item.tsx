@@ -7,39 +7,43 @@ import { Menu } from 'widgets/menu'
 
 import styles from './styles.module.css'
 
-interface TasksItemProps extends Task {}
+interface TasksItemProps extends Task {
+  index: number
+}
 
-export const TasksItem = memo(({ title, id, isCompleted }: TasksItemProps) => {
-  const { toggle, isVisible, close } = useToggle()
+export const TasksItem = memo(
+  ({ title, id, isCompleted, index }: TasksItemProps) => {
+    const { toggle, isVisible, close } = useToggle()
 
-  const [, drag] = useDrag(() => ({
-    type: 'task',
-    item: { id },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }))
+    const [, drag] = useDrag(() => ({
+      type: 'task',
+      item: { id },
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging(),
+      }),
+    }))
 
-  const handleCloseMenu = () => {
-    close()
-  }
+    const handleCloseMenu = () => {
+      close()
+    }
 
-  return (
-    <>
-      <div className={styles.taskWrapper} ref={drag}>
-        <div className={styles.taskContainer}>
-          <div className={styles.taskContent}>
-            <UpdateStatusTask id={id} isCompleted={isCompleted} />
-            <div className={styles.taskTitle}>{title}</div>
-            <ControlTask toggle={toggle} />
+    return (
+      <div style={{ marginTop: index !== 0 ? 10 : 0 }}>
+        <div className={styles.taskWrapper} ref={drag}>
+          <div className={styles.taskContainer}>
+            <div className={styles.taskContent}>
+              <UpdateStatusTask id={id} isCompleted={isCompleted} />
+              <div className={styles.taskTitle}>{title}</div>
+              <ControlTask toggle={toggle} />
+            </div>
+            {isCompleted && <div className={styles.taskOverlay}></div>}
           </div>
-          {isCompleted && <div className={styles.taskOverlay}></div>}
+          {isVisible && <Menu id={id} isVisible={isVisible} />}
         </div>
-        {isVisible && <Menu id={id} isVisible={isVisible} />}
+        {isVisible && (
+          <div className={styles.menuWrapper} onClick={handleCloseMenu}></div>
+        )}
       </div>
-      {isVisible && (
-        <div className={styles.menuWrapper} onClick={handleCloseMenu}></div>
-      )}
-    </>
-  )
-})
+    )
+  },
+)

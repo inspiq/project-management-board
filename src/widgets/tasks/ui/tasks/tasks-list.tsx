@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { useDrop } from 'react-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from 'app/store'
@@ -44,10 +43,8 @@ export const TasksList = ({ columnTitle, status }: TasksListProps) => {
       <div className={cn}></div>
       {data?.map(([statusGroup, tasks]) => {
         if (statusGroup === status) {
-          return tasks.map((task) => (
-            <Fragment key={task.id}>
-              <TasksItem {...task} />
-            </Fragment>
+          return tasks.map((task, index) => (
+            <TasksItem {...task} index={index} key={task.id} />
           ))
         }
       })}
